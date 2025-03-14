@@ -1,0 +1,9 @@
+# Add these to your existing requirements.txt
+fastapi
+uvicorn
+sqlalchemy
+databases
+pydantic  
+dotenv
+selenium
+beautifulsoup4
