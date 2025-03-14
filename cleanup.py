@@ -6,19 +6,19 @@ import logging
 def cleanup_scraper():
     """Reset scraper state by cleaning up Chrome profile and cookies"""
     try:
-        # Remove Chrome profile directory
+       
         chrome_profile = os.path.join(os.path.dirname(__file__), 'chrome_profile')
         if os.path.exists(chrome_profile):
             shutil.rmtree(chrome_profile)
             print(f"✓ Chrome profile removed")
             
-        # Remove cookies file
+       
         cookies_file = os.path.join(os.path.dirname(__file__), 'linkedin_cookies.pkl')
         if os.path.exists(cookies_file):
             os.remove(cookies_file)
             print(f"✓ Cookies file removed")
             
-        # Remove screenshots
+       
         for filename in os.listdir(os.path.dirname(__file__)):
             if filename.endswith('.png'):
                 os.remove(os.path.join(os.path.dirname(__file__), filename))

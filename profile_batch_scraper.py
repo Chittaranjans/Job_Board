@@ -21,7 +21,7 @@ logging.basicConfig(
     ]
 )
 
-# Global flag to track graceful shutdown
+
 should_exit = False
 
 def signal_handler(sig, frame):
@@ -37,8 +37,7 @@ def get_profile_urls(source_type: str, source_path: str = None, search_terms: Li
     if source_type == "file" and source_path:
         return load_urls_from_file(source_path, count)
     else:
-        # Generate sample URLs based on common LinkedIn profile patterns
-        # In a real implementation, this would search LinkedIn or use another source
+        
         base_urls = [
             "https://www.linkedin.com/in/williamhgates/",
             "https://www.linkedin.com/in/satyanadella/",
@@ -50,14 +49,13 @@ def get_profile_urls(source_type: str, source_path: str = None, search_terms: Li
             "https://www.linkedin.com/in/chittaranjan18/"  # From your test file
         ]
         
-        # Generate variations of URLs to reach count
+       
         urls = []
         for i in range(min(count, 100)):
             if i < len(base_urls):
                 urls.append(base_urls[i])
             else:
-                # Create synthetic profile URLs - these won't be real profiles
-                # but help demonstrate the script's functionality
+                
                 random_id = ''.join(random.choices('abcdefghijklmnopqrstuvwxyz', k=8))
                 urls.append(f"https://www.linkedin.com/in/{random_id}/")
         

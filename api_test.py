@@ -41,9 +41,6 @@ def test_api():
         print(f"Error: {str(e)}")
 
 def test_api_scraping():
-    """Test the job scraping API and verify database storage"""
-    
-    # Step 1: Check initial job count
     print("\nChecking initial jobs in database...")
     try:
         response = requests.get("http://localhost:8000/api/v1/jobs")
@@ -53,10 +50,10 @@ def test_api_scraping():
         print(f"Error checking initial jobs: {str(e)}")
         return
     
-    # Step 2: Trigger job scraping via API
+    
     print("\nTriggering job scraping via API...")
     try:
-        # NOTE: Using POST instead of GET!
+        
         response = requests.post(
             "http://localhost:8000/api/v1/jobs/scrape",
             params={"search_query": "python developer", "location": "remote", "limit": 3}
@@ -69,11 +66,11 @@ def test_api_scraping():
         result = response.json()
         print(f"API response: {json.dumps(result, indent=2)}")
         
-        # Step 3: Wait for background task to complete
+        
         print("\nWaiting for background task to complete (30 seconds)...")
         time.sleep(30)  # Give time for background task
         
-        # Step 4: Check if new jobs were added
+       
         print("\nChecking for new jobs...")
         response = requests.get("http://localhost:8000/api/v1/jobs")
         final_jobs = response.json()
